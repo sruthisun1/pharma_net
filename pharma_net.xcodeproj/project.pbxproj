@@ -16,6 +16,10 @@
 		487100822CE6AE14004FA420 /* pharma_netTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487100812CE6AE14004FA420 /* pharma_netTests.swift */; };
 		4871008C2CE6AE14004FA420 /* pharma_netUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4871008B2CE6AE14004FA420 /* pharma_netUITests.swift */; };
 		4871008E2CE6AE14004FA420 /* pharma_netUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4871008D2CE6AE14004FA420 /* pharma_netUITestsLaunchTests.swift */; };
+		4871009B2CE877B5004FA420 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4871009A2CE877B5004FA420 /* MainTabView.swift */; };
+		4871009F2CE8917D004FA420 /* DrugResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4871009E2CE8917D004FA420 /* DrugResultsView.swift */; };
+		487100A42CE893F3004FA420 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487100A32CE893F3004FA420 /* NetworkManager.swift */; };
+		487100A62CE896C4004FA420 /* DrugResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487100A52CE896C4004FA420 /* DrugResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		487100872CE6AE14004FA420 /* pharma_netUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pharma_netUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4871008B2CE6AE14004FA420 /* pharma_netUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pharma_netUITests.swift; sourceTree = "<group>"; };
 		4871008D2CE6AE14004FA420 /* pharma_netUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pharma_netUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4871009A2CE877B5004FA420 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		4871009E2CE8917D004FA420 /* DrugResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugResultsView.swift; sourceTree = "<group>"; };
+		487100A32CE893F3004FA420 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		487100A52CE896C4004FA420 /* DrugResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +114,10 @@
 				487100782CE6AE13004FA420 /* Info.plist */,
 				487100752CE6AE13004FA420 /* pharma_net.xcdatamodeld */,
 				487100702CE6AE13004FA420 /* Preview Content */,
+				4871009A2CE877B5004FA420 /* MainTabView.swift */,
+				4871009E2CE8917D004FA420 /* DrugResultsView.swift */,
+				487100A32CE893F3004FA420 /* NetworkManager.swift */,
+				487100A52CE896C4004FA420 /* DrugResult.swift */,
 			);
 			path = pharma_net;
 			sourceTree = "<group>";
@@ -265,10 +277,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4871009F2CE8917D004FA420 /* DrugResultsView.swift in Sources */,
 				487100742CE6AE13004FA420 /* Persistence.swift in Sources */,
 				4871006D2CE6AE12004FA420 /* ContentView.swift in Sources */,
+				487100A42CE893F3004FA420 /* NetworkManager.swift in Sources */,
+				487100A62CE896C4004FA420 /* DrugResult.swift in Sources */,
 				487100772CE6AE13004FA420 /* pharma_net.xcdatamodeld in Sources */,
 				4871006B2CE6AE12004FA420 /* pharma_netApp.swift in Sources */,
+				4871009B2CE877B5004FA420 /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
