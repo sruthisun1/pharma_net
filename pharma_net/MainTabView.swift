@@ -29,7 +29,11 @@ struct MainTabView: View {
                     Image(systemName: "qrcode.viewfinder")
                     Text("Scanner")
                 }
-            
+            MapsView()
+                .tabItem {
+                    Image(systemName: "map.fill")
+                    Text("Maps")
+                            }
             ProfileView()
                 .navigationBarBackButtonHidden(true)
                 .tabItem {
@@ -40,14 +44,31 @@ struct MainTabView: View {
     }
 }
 
-struct VisualView: View {
-    var body: some View {
-        NavigationView {
-            Text("Visual Analytics")
-        }
-        .navigationBarHidden(true)
-    }
-}
+//struct MapsView: View {
+//    @StateObject private var locationManager = LocationManager()  // Initialize the LocationManager
+//    
+//    var body: some View {
+//        NavigationView {
+//            VStack {
+//                if locationManager.isAuthorized {
+//                    Map(coordinateRegion: $locationManager.region, showsUserLocation: true)  // Enable the blue dot
+//                        .edgesIgnoringSafeArea(.all)  // Make the map fill the screen
+//                        .onAppear {
+//                            locationManager.startUpdatingLocation()  // Start location updates
+//                        }
+//                } else {
+//                    Text("Please enable location services in Settings.")  // Display message when permission is denied
+//                        .padding()
+//                }
+//            }
+//        }
+//        .navigationBarHidden(true)  // Optional: Hide the navigation bar if you don't need it
+//    }
+//}
+// Keep your existing views
+
+
+
 
 struct ScannerView: View {
     var body: some View {
