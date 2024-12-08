@@ -40,6 +40,15 @@ struct MainTabView: View {
     }
 }
 
+struct VisualView: View {
+    var body: some View {
+        NavigationView {
+            Text("Visual Analytics")
+        }
+        .navigationBarHidden(true)
+    }
+}
+
 struct ScannerView: View {
     var body: some View {
         NavigationView {
