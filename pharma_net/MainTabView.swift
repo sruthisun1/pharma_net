@@ -1,8 +1,12 @@
 import SwiftUI
-import MapKit
 
 struct MainTabView: View {
+    
     let userID: String
+    @StateObject private var graph = AdjacencyList<String>()
+    
+    
+    
     
     var body: some View {
         TabView {
@@ -12,7 +16,7 @@ struct MainTabView: View {
                     Text("Database")
                 }
             
-            VisualView()
+            VisualView(graph: graph)
                 .navigationBarBackButtonHidden(true)
                 .tabItem {
                     Image(systemName: "point.3.connected.trianglepath.dotted")
@@ -26,13 +30,6 @@ struct MainTabView: View {
                     Text("Scanner")
                 }
             
-            MapsView()
-                .navigationBarBackButtonHidden(true)
-                .tabItem {
-                    Image(systemName: "map.fill")
-                    Text("Maps")
-                }
-            
             ProfileView()
                 .navigationBarBackButtonHidden(true)
                 .tabItem {
@@ -40,32 +37,6 @@ struct MainTabView: View {
                     Text("Profile")
                 }
         }
-    }
-}
-
-// Add new MapsView
-struct MapsView: View {
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 37.3361, longitude: -121.8907),
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-    )
-    
-    var body: some View {
-        NavigationView {
-            Map(coordinateRegion: $region)
-                .edgesIgnoringSafeArea(.all)
-        }
-        .navigationBarHidden(true)
-    }
-}
-
-// Keep your existing views
-struct VisualView: View {
-    var body: some View {
-        NavigationView {
-            Text("Visual Analytics")
-        }
-        .navigationBarHidden(true)
     }
 }
 
