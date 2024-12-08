@@ -6,28 +6,31 @@
 //
 
 import Foundation
-
+// MapsView.swift
 import SwiftUI
-import MapKit
+import GoogleMaps
 
 struct MapsView: View {
-    @StateObject private var locationManager = LocationManager()  // Initialize the LocationManager
+    @StateObject private var locationManager = LocationManager()
     
+    // Default camera position (in case we don't have a location)
+    private var defaultCameraPosition = GMSCameraPosition(latitude: 40.1164, longitude: -88.2434, zoom: 15, bearing: 0, viewingAngle: 0)
+
     var body: some View {
-        NavigationView {
-            VStack {
-                if locationManager.isAuthorized {
-                    Map(coordinateRegion: $locationManager.region, showsUserLocation: true)  // Enable the blue dot
-                        .edgesIgnoringSafeArea(.all)  // Make the map fill the screen
-                        .onAppear {
-                            locationManager.startUpdatingLocation()  // Start location updates
-                        }
-                } else {
-                    Text("Please enable location services in Settings.")  // Display message when permission is denied
-                        .padding()
+        VStack {
+            if let userLocation = locationManager.userLocation {
+                GoogleMapView(
+                    cameraPosition: GMSCameraPosition(target: userLocation, zoom: 15, bearing: 0, viewingAngle: 0),
+                    isMyLocationEnabled: true,
+                    myLocationButton: true
+                )
+                .onAppear {
+                    locationManager.startUpdatingLocation()
                 }
+            } else {
+                Text("Waiting for location...")
             }
         }
-        .navigationBarHidden(true)  // Optional: Hide the navigation bar if you don't need it
+        .edgesIgnoringSafeArea(.all)  // Ensure the map fills the screen
     }
 }

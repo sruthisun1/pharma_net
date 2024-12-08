@@ -1,48 +1,42 @@
-//
-//  Map_Feature.swift
-//  pharma_net
-//
-//  Created by Claire on 12/7/24.
-//
-
 import Foundation
-import SwiftUI
-import MapKit
 import CoreLocation
+import MapKit
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var locationManager: CLLocationManager
+
     @Published var region: MKCoordinateRegion
     @Published var userLocation: CLLocationCoordinate2D?
-    @Published var isAuthorized: Bool = false
+    @Published var isAuthorized: Bool = true
 
     override init() {
         self.locationManager = CLLocationManager()
 
-        // Set default region (around San Jose, CA in this case)
-        let initialLocation = CLLocationCoordinate2D(latitude: 37.3361, longitude: -121.8907)
+        // Default location (Champaign, Illinois for example)
+        let initialLocation = CLLocationCoordinate2D(latitude: 40.1164, longitude: -88.2434)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         self.region = MKCoordinateRegion(center: initialLocation, span: span)
 
         super.init()
-        
+
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()  // Request permission to use location while app is in use
+        locationManager.requestWhenInUseAuthorization()
     }
 
-    // Start updating location
-    func startUpdatingLocation() {
+    // Start updating location only when authorized
+    public func startUpdatingLocation() {
+        // Start location updates after checking the authorization status
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
         }
     }
-    
+
     // Handle location updates
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let newLocation = locations.last else { return }
         userLocation = newLocation.coordinate
-        
+
         // Update region with the new location
         region = MKCoordinateRegion(
             center: newLocation.coordinate,
@@ -50,15 +44,17 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         )
     }
 
+    // Handle errors in location updates
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location error: \(error.localizedDescription)")
     }
 
+    // Handle changes in authorization status
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedWhenInUse, .authorizedAlways:
             isAuthorized = true
-            startUpdatingLocation()  // Start location updates once authorized
+            startUpdatingLocation() // Start location updates once authorized
         case .denied, .restricted:
             isAuthorized = false
         case .notDetermined:
@@ -68,26 +64,3 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
 }
-
-//struct MapsView: View {
-//    @StateObject private var locationManager = LocationManager()  // Initialize the LocationManager
-//    @State private var userLocation = CLLocationCoordinate2D()  // Track user location
-//    
-//    var body: some View {
-//        NavigationView {
-//            VStack {
-//                if locationManager.isAuthorized {
-//                    Map(coordinateRegion: $locationManager.region, showsUserLocation: true)  // Enable the blue dot
-//                        .edgesIgnoringSafeArea(.all)  // Make the map fill the screen
-//                        .onAppear {
-//                            locationManager.startUpdatingLocation()  // Start location updates
-//                        }
-//                } else {
-//                    Text("Please enable location services in Settings.")  // Display message when permission is denied
-//                        .padding()
-//                }
-//            }
-//        }
-//        .navigationBarHidden(true)  // Optional: Hide the navigation bar if you don't need it
-//    }
-//}
