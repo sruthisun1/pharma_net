@@ -16,18 +16,18 @@ struct MainTabView: View {
                     Text("Database")
                 }
             
-            VisualView(graph: graph)
+            VisualView(graph: graph, userID:userID)
                 .navigationBarBackButtonHidden(true)
                 .tabItem {
                     Image(systemName: "point.3.connected.trianglepath.dotted")
                     Text("Visual")
                 }
             
-            ScannerView()
+            SearchView()
                 .navigationBarBackButtonHidden(true)
                 .tabItem {
-                    Image(systemName: "qrcode.viewfinder")
-                    Text("Scanner")
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
                 }
             MapsView()
                 .tabItem {
@@ -44,26 +44,27 @@ struct MainTabView: View {
     }
 }
 
-struct ScannerView: View {
+struct SearchView: View {
     var body: some View {
         NavigationView {
-            Text("Scanner")
+            Text("SearchView")
         }
         .navigationBarHidden(true)
     }
 }
 
-struct ProfileView: View {
-    var body: some View {
-        NavigationView {
-            Text("User Profile")
-        }
-        .navigationBarHidden(true)
-    }
-}
+//struct ProfileView: View {
+//    var body: some View {
+//        NavigationView {
+//            Text("User Profile")
+//        }
+//        .navigationBarHidden(true)
+//    }
+//}
 
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView(userID: "1")
     }
 }
+

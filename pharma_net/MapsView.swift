@@ -16,7 +16,7 @@ struct MapsView: View {
                         if viewModel.selectedPharmacy?.id == pharmacy.id {
                             Text(pharmacy.name)
                                 .padding(5)
-                                .background(Color.black)
+                                .background(Color.white)
                                 .cornerRadius(10)
                                 .shadow(radius: 5)
                         }

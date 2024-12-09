@@ -26,6 +26,9 @@ open class AdjacencyList<T: Hashable>: ObservableObject {
        public func edges() -> [Edge<T>] {
            return adjacencyDict.values.flatMap { $0 }
        }
+    func clear() {
+            adjacencyDict.removeAll() // Remove all vertices and edges
+        }
     
 }
 

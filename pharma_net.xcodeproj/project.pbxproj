@@ -28,6 +28,8 @@
 		A74CFA7E2D0644EE008D7BAF /* MapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74CFA7D2D0644EE008D7BAF /* MapsView.swift */; };
 		A74CFA802D064890008D7BAF /* DrugInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74CFA7F2D064890008D7BAF /* DrugInteraction.swift */; };
 		A74CFA822D0654E0008D7BAF /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74CFA812D0654E0008D7BAF /* MapViewRepresentable.swift */; };
+		A74CFA842D06BB58008D7BAF /* DrugSeverityCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74CFA832D06BB58008D7BAF /* DrugSeverityCount.swift */; };
+		A74CFA862D06BB7C008D7BAF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74CFA852D06BB7C008D7BAF /* ProfileView.swift */; };
 		A7694B132D05594F00EE8B88 /* AdjacencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7694B122D05594F00EE8B88 /* AdjacencyList.swift */; };
 		A7694B152D05597800EE8B88 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7694B142D05597800EE8B88 /* Edge.swift */; };
 		A7694B172D05599D00EE8B88 /* Graphable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7694B162D05599D00EE8B88 /* Graphable.swift */; };
@@ -79,6 +81,8 @@
 		A74CFA7D2D0644EE008D7BAF /* MapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsView.swift; sourceTree = "<group>"; };
 		A74CFA7F2D064890008D7BAF /* DrugInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugInteraction.swift; sourceTree = "<group>"; };
 		A74CFA812D0654E0008D7BAF /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = "<group>"; };
+		A74CFA832D06BB58008D7BAF /* DrugSeverityCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugSeverityCount.swift; sourceTree = "<group>"; };
+		A74CFA852D06BB7C008D7BAF /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A7694B122D05594F00EE8B88 /* AdjacencyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyList.swift; sourceTree = "<group>"; };
 		A7694B142D05597800EE8B88 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		A7694B162D05599D00EE8B88 /* Graphable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphable.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 		4871005E2CE6AE12004FA420 = {
 			isa = PBXGroup;
 			children = (
+				A74CFA852D06BB7C008D7BAF /* ProfileView.swift */,
 				487100692CE6AE12004FA420 /* pharma_net */,
 				487100802CE6AE14004FA420 /* pharma_netTests */,
 				4871008A2CE6AE14004FA420 /* pharma_netUITests */,
@@ -156,6 +161,7 @@
 				487100A32CE893F3004FA420 /* NetworkManager.swift */,
 				487100A52CE896C4004FA420 /* DrugResult.swift */,
 				A74CFA7F2D064890008D7BAF /* DrugInteraction.swift */,
+				A74CFA832D06BB58008D7BAF /* DrugSeverityCount.swift */,
 			);
 			path = pharma_net;
 			sourceTree = "<group>";
@@ -332,6 +338,7 @@
 				7E59114C2D060F37000232EE /* LocationManager.swift in Sources */,
 				4871009F2CE8917D004FA420 /* DrugResultsView.swift in Sources */,
 				487100742CE6AE13004FA420 /* Persistence.swift in Sources */,
+				A74CFA842D06BB58008D7BAF /* DrugSeverityCount.swift in Sources */,
 				A74CFA7E2D0644EE008D7BAF /* MapsView.swift in Sources */,
 				A74CFA802D064890008D7BAF /* DrugInteraction.swift in Sources */,
 				4871006D2CE6AE12004FA420 /* ContentView.swift in Sources */,
@@ -342,6 +349,7 @@
 				487100A62CE896C4004FA420 /* DrugResult.swift in Sources */,
 				A7694B1B2D0559C700EE8B88 /* Vertex.swift in Sources */,
 				A74CFA822D0654E0008D7BAF /* MapViewRepresentable.swift in Sources */,
+				A74CFA862D06BB7C008D7BAF /* ProfileView.swift in Sources */,
 				A7694B1D2D0559D400EE8B88 /* VisualView.swift in Sources */,
 				487100772CE6AE13004FA420 /* pharma_net.xcdatamodeld in Sources */,
 				7E3B29252D0557730012F744 /* MapView.swift in Sources */,
