@@ -1,27 +1,27 @@
+////
+////  clairemap.swift
+////  pharma_net
+////
+////  Created by Claire on 12/8/24.
+////
 //
-//  clairemap.swift
-//  pharma_net
+//import Foundation
+//// YourAppNameApp.swift
+//import SwiftUI
+//import GoogleMaps
+//import GooglePlaces
 //
-//  Created by Claire on 12/8/24.
+//@main
+//struct YourAppNameApp: App {
+//    init() {
+//        // Set up Google Maps API keys
+//        GMSServices.provideAPIKey("AIzaSyAcBSS1abZk7kmWRNYXE_afh1r-1_Aj_rM")
+//        GMSPlacesClient.provideAPIKey("AIzaSyAcBSS1abZk7kmWRNYXE_afh1r-1_Aj_rM")
+//    }
 //
-
-import Foundation
-// YourAppNameApp.swift
-import SwiftUI
-import GoogleMaps
-import GooglePlaces
-
-@main
-struct YourAppNameApp: App {
-    init() {
-        // Set up Google Maps API keys
-        GMSServices.provideAPIKey("AIzaSyCNcYUEURD7DSk6qksdKyp63w-ZetdWQZc")
-        GMSPlacesClient.provideAPIKey("AIzaSyCNcYUEURD7DSk6qksdKyp63w-ZetdWQZc")
-    }
-
-    var body: some Scene {
-        WindowGroup {
-            MapsView()
-        }
-    }
-}
+//    var body: some Scene {
+//        WindowGroup {
+//            MapsView()
+//        }
+//    }
+//}
