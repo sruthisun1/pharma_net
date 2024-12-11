@@ -1,12 +1,16 @@
 import SwiftUI
 
-
 class ProfileViewModel: ObservableObject {
     @Published var drugSeverityCounts: [DrugSeverityCount] = []
     @Published var isLoading = false
     @Published var errorMessage: String? = nil
+    private let userID: Int
 
-    func fetchSevereInteractions(userID: Int) {
+    init(userID: Int) {
+        self.userID = userID
+    }
+
+    func fetchSevereInteractions() {
         isLoading = true
         NetworkManager.countSevereInteractions(userID: userID) { results, error in
             DispatchQueue.main.async {
@@ -24,12 +28,16 @@ class ProfileViewModel: ObservableObject {
 }
 
 struct ProfileView: View {
-    @State private var drugSeverityCounts: [DrugSeverityCount] = []
+    @StateObject private var viewModel: ProfileViewModel
+
+    init(userID: Int) {
+        self._viewModel = StateObject(wrappedValue: ProfileViewModel(userID: userID))
+    }
 
     var body: some View {
         VStack {
-            if !drugSeverityCounts.isEmpty {
-                List(drugSeverityCounts) { drugSeverityCount in
+            if !viewModel.drugSeverityCounts.isEmpty {
+                List(viewModel.drugSeverityCounts) { drugSeverityCount in
                     HStack {
                         Text(drugSeverityCount.drug)
                         Spacer()
@@ -41,20 +49,8 @@ struct ProfileView: View {
             }
         }
         .onAppear {
-            NetworkManager.countSevereInteractions(userID: 54) { results, error in
-                if let results = results {
-                    self.drugSeverityCounts = results
-                } else if let error = error {
-                    print("Error fetching severe interactions: \(error.localizedDescription)")
-                }
-            }
+            viewModel.fetchSevereInteractions()
         }
-    }
-}
-
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
     }
 }
 

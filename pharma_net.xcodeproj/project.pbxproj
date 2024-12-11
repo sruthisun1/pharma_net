@@ -25,6 +25,8 @@
 		7E59114C2D060F37000232EE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E59114B2D060F37000232EE /* LocationManager.swift */; };
 		7E59114E2D060F50000232EE /* GoogleMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E59114D2D060F50000232EE /* GoogleMapView.swift */; };
 		7E5911502D060F9C000232EE /* clairemap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E59114F2D060F9C000232EE /* clairemap.swift */; };
+		A73C6D6A2D0A33CD0042E1B6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73C6D692D0A33CD0042E1B6 /* SearchView.swift */; };
+		A73C6D6C2D0A340E0042E1B6 /* DrugHistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73C6D6B2D0A340E0042E1B6 /* DrugHistoryItem.swift */; };
 		A74CFA7E2D0644EE008D7BAF /* MapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74CFA7D2D0644EE008D7BAF /* MapsView.swift */; };
 		A74CFA802D064890008D7BAF /* DrugInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74CFA7F2D064890008D7BAF /* DrugInteraction.swift */; };
 		A74CFA822D0654E0008D7BAF /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74CFA812D0654E0008D7BAF /* MapViewRepresentable.swift */; };
@@ -78,6 +80,8 @@
 		7E59114B2D060F37000232EE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7E59114D2D060F50000232EE /* GoogleMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapView.swift; sourceTree = "<group>"; };
 		7E59114F2D060F9C000232EE /* clairemap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clairemap.swift; sourceTree = "<group>"; };
+		A73C6D692D0A33CD0042E1B6 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		A73C6D6B2D0A340E0042E1B6 /* DrugHistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugHistoryItem.swift; sourceTree = "<group>"; };
 		A74CFA7D2D0644EE008D7BAF /* MapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsView.swift; sourceTree = "<group>"; };
 		A74CFA7F2D064890008D7BAF /* DrugInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugInteraction.swift; sourceTree = "<group>"; };
 		A74CFA812D0654E0008D7BAF /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				487100752CE6AE13004FA420 /* pharma_net.xcdatamodeld */,
 				487100702CE6AE13004FA420 /* Preview Content */,
 				4871009A2CE877B5004FA420 /* MainTabView.swift */,
+				A73C6D692D0A33CD0042E1B6 /* SearchView.swift */,
 				4871009E2CE8917D004FA420 /* DrugResultsView.swift */,
 				7E3B29222D0556320012F744 /* Map_Feature.swift */,
 				7E3B29242D0557720012F744 /* MapView.swift */,
@@ -160,6 +165,7 @@
 				7E59114F2D060F9C000232EE /* clairemap.swift */,
 				487100A32CE893F3004FA420 /* NetworkManager.swift */,
 				487100A52CE896C4004FA420 /* DrugResult.swift */,
+				A73C6D6B2D0A340E0042E1B6 /* DrugHistoryItem.swift */,
 				A74CFA7F2D064890008D7BAF /* DrugInteraction.swift */,
 				A74CFA832D06BB58008D7BAF /* DrugSeverityCount.swift */,
 			);
@@ -348,6 +354,7 @@
 				7E3B29232D0556320012F744 /* Map_Feature.swift in Sources */,
 				487100A62CE896C4004FA420 /* DrugResult.swift in Sources */,
 				A7694B1B2D0559C700EE8B88 /* Vertex.swift in Sources */,
+				A73C6D6A2D0A33CD0042E1B6 /* SearchView.swift in Sources */,
 				A74CFA822D0654E0008D7BAF /* MapViewRepresentable.swift in Sources */,
 				A74CFA862D06BB7C008D7BAF /* ProfileView.swift in Sources */,
 				A7694B1D2D0559D400EE8B88 /* VisualView.swift in Sources */,
@@ -355,6 +362,7 @@
 				7E3B29252D0557730012F744 /* MapView.swift in Sources */,
 				4871006B2CE6AE12004FA420 /* pharma_netApp.swift in Sources */,
 				A7694B172D05599D00EE8B88 /* Graphable.swift in Sources */,
+				A73C6D6C2D0A340E0042E1B6 /* DrugHistoryItem.swift in Sources */,
 				A7694B152D05597800EE8B88 /* Edge.swift in Sources */,
 				4871009B2CE877B5004FA420 /* MainTabView.swift in Sources */,
 			);

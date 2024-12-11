@@ -82,80 +82,103 @@ struct VisualView: View {
                         .foregroundColor(.red)
                         .padding()
                 }
+
+                // Save Drug Combination Button
+                Button(action: saveDrugCombination) {
+                    Text("Save Drug Combination")
+                        .padding()
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                .padding()
             }
         }
         .alert(isPresented: $showSeverityAlert) {
-                        Alert(
-                            title: Text("Drug Interaction Alert"),
-                            message: Text(severityMessage),
-                            dismissButton: .default(Text("OK"))
-                        )
-                    }
+            Alert(
+                title: Text("Drug Interaction Alert"),
+                message: Text(severityMessage),
+                dismissButton: .default(Text("OK"))
+            )
+        }
         .navigationBarHidden(true)
     }
     
     private func addVertex() {
         guard !newVertexName.isEmpty else { return }
+        
+        // Add the new drug vertex to the graph
         graph.createVertex(data: newVertexName)
+        
+        // Call checkInteractions to update the graph with potential drug interactions
         checkInteractions()
+        
+        // Call checkNewDrugInteraction for the new drug added
+        checkNewDrugInteraction(userID: userID, drugName: newVertexName)
+        
+        // Clear the text field for new input
         newVertexName = ""
+    }
+    
+    private func saveDrugCombination() {
+        // Fetch all drug names from the graph
+        let drugNames = graph.vertices().map { $0.data }
+        
+        // Call the NetworkManager to save the combination
+        NetworkManager.saveCombination(userID: Int(userID) ?? 0, drugNames: drugNames) { success, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    self.errorMessage = "Failed to save combination: \(error.localizedDescription)"
+                } else if success {
+                    self.errorMessage = "Combination saved successfully!"
+                } else {
+                    self.errorMessage = "Failed to save combination."
+                }
+            }
+        }
     }
     
     private func checkInteractions() {
         let drugs = graph.vertices().map { $0.data }
-//        print("Checking interactions for drugs: \(drugs)")  // Debug print
         
         NetworkManager.checkDrugInteractions(drugs: drugs) { results, error in
             if let error = error {
-//                print("Error checking interactions: \(error)")  // Debug print
-                self.errorMessage = error.localizedDescription
+                DispatchQueue.main.async {
+                    self.errorMessage = error.localizedDescription
+                }
             } else if let results = results {
-//                print("Received interactions: \(results)")  // Debug print
-                // Update graph edges based on interactions
-                for interaction in results {
-                    let sourceVertex = Vertex(data: interaction.drug1)
-                    let destVertex = Vertex(data: interaction.drug2)
-                    
-                    // Add edge with weight based on severity
-                    let weight = interaction.severity == "Major" ? 2.0 : 1.0
-                    graph.add(.undirected, from: sourceVertex, to: destVertex, weight: weight)
-//                    print("Added edge between \(interaction.drug1) and \(interaction.drug2)")  // Debug print
+                DispatchQueue.main.async {
+                    for interaction in results {
+                        let sourceVertex = Vertex(data: interaction.drug1)
+                        let destVertex = Vertex(data: interaction.drug2)
+                        
+                        // Add edge with weight based on severity
+                        let weight = interaction.severity == "Major" ? 2.0 : 1.0
+                        graph.add(.undirected, from: sourceVertex, to: destVertex, weight: weight)
+                    }
                 }
             }
         }
     }
     
     private func checkNewDrugInteraction(userID: String, drugName: String) {
-        NetworkManager.fetchNewDrugInteractions(userID: userID, drugName: drugName) { results, error in
-            if let error = error {
-                DispatchQueue.main.async {
-                    print("Error fetching drug interactions: \(error.localizedDescription)")
-                    self.errorMessage = error.localizedDescription
+        NetworkManager.fetchNewDrugInteractions(userID: userID, drugName: drugName) { hasModerateOrMajor, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    // Display an error message if the API call fails
+                    self.errorMessage = "Error: \(error.localizedDescription)"
+                    return
                 }
-                return
-            }
-            
-            if let results = results, !results.isEmpty {
-                print("Received results: \(results)") // Debug print
-                if results.contains(where: { $0.severity.trimmingCharacters(in: .whitespacesAndNewlines) == "Moderate" || $0.severity.trimmingCharacters(in: .whitespacesAndNewlines) == "Severe" }) {
-                    DispatchQueue.main.async {
-                        print("Setting alert for severity: \(results)") // Debug print
-                        self.severityMessage = "The drug \(drugName) has interactions with severity: Moderate or Severe."
-                        self.showSeverityAlert = true
-                    }
-                } else {
-                    print("No Moderate or Severe interactions found.") // Debug print
-                }
-            } else {
-                DispatchQueue.main.async {
-                    print("Results are empty or nil.") // Debug print
+                
+                if hasModerateOrMajor {
+                    // Display the popup if the severity is "Moderate" or "Major"
+                    self.severityMessage = "The drug \(drugName) has a moderate or major interaction with your current drug history"
+                    self.showSeverityAlert = true
                 }
             }
         }
     }
 
-    
-    
     private func midpoint(from: CGPoint, to: CGPoint) -> CGPoint {
         CGPoint(x: (from.x + to.x) / 2, y: (from.y + to.y) / 2)
     }

@@ -2,28 +2,26 @@ import SwiftUI
 
 struct MainTabView: View {
     
-    let userID: String
+    let userID: Int
     @StateObject private var graph = AdjacencyList<String>()
-    
-    
     
     
     var body: some View {
         TabView {
-            DrugResultsView(userID: userID)
+            DrugResultsView(userID: String(userID))
                 .tabItem {
                     Image(systemName: "heart.text.square")
                     Text("Database")
                 }
             
-            VisualView(graph: graph, userID:userID)
+            VisualView(graph: graph, userID:String(userID))
                 .navigationBarBackButtonHidden(true)
                 .tabItem {
                     Image(systemName: "point.3.connected.trianglepath.dotted")
                     Text("Visual")
                 }
             
-            SearchView()
+            SearchView(userID: String(userID))
                 .navigationBarBackButtonHidden(true)
                 .tabItem {
                     Image(systemName: "magnifyingglass")
@@ -34,7 +32,7 @@ struct MainTabView: View {
                     Image(systemName: "map.fill")
                     Text("Maps")
                             }
-            ProfileView()
+            ProfileView(userID: userID)
                 .navigationBarBackButtonHidden(true)
                 .tabItem {
                     Image(systemName: "person.fill")
@@ -44,14 +42,14 @@ struct MainTabView: View {
     }
 }
 
-struct SearchView: View {
-    var body: some View {
-        NavigationView {
-            Text("SearchView")
-        }
-        .navigationBarHidden(true)
-    }
-}
+//struct SearchView: View {
+//    var body: some View {
+//        NavigationView {
+//            Text("SearchView")
+//        }
+//        .navigationBarHidden(true)
+//    }
+//}
 
 //struct ProfileView: View {
 //    var body: some View {
@@ -64,7 +62,8 @@ struct SearchView: View {
 
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView(userID: "1")
+        MainTabView(userID: 1)
     }
 }
+
 

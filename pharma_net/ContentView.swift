@@ -16,7 +16,7 @@ struct ContentView: View {
                     .padding(.horizontal, 50)
                     .keyboardType(.numberPad)
                 
-                NavigationLink(destination: MainTabView(userID: userID)) {
+                NavigationLink(destination: MainTabView(userID: Int(userID) ?? 0)) {
                     Text("View Drug Results")
                         .font(.title2)
                         .foregroundColor(.blue)
